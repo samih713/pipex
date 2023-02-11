@@ -6,7 +6,7 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:21:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/10 20:37:23 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/11 21:17:07 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	open_file(char *path, int option)
 			fd = open(path, O_RDONLY);
 	}
 	else
-		fd = open(path, O_CREAT | O_TRUNC | O_WRONLY, 0644);
+		fd = open(path, O_CREAT | O_TRUNC | O_WRONLY, 0777);
 	if (fd < 0)
 		error_msg("File error");
 	return (fd);

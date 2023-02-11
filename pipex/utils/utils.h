@@ -6,7 +6,7 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 22:01:54 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/10 22:05:43 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/11 20:17:56 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define UTILS_H
 
 # include <stdlib.h>
+# include <stdint.h>
 
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *dest, int c, size_t len);

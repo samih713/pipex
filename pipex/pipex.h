@@ -6,7 +6,7 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:35:54 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/10 22:31:58 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:23:32 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <assert.h>
 # include <sys/wait.h>
 # include <sys/types.h>
+# include <errno.h>
 # include "./utils/utils.h"
 
 char	**ft_split(char *s, char del);

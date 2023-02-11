@@ -6,7 +6,7 @@
 #    By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/22 16:16:17 by sabdelra          #+#    #+#              #
-#    Updated: 2023/02/10 23:06:09 by sabdelra         ###   ########.fr        #
+#    Updated: 2023/02/11 21:18:23 by sabdelra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBDIR:= ./utils
 all: $(NAME)
 
 $(NAME): $(OBJ) libutils
-	$(CC) $(CFLAGS) -I $(LIBDIR) -L $(LIBDIR) -lutils $(OBJ)  -o $@ -g
+	$(CC) $(CFLAGS) $(OBJ) ./utils/libutils.a  -o $@
 
 libutils:
 	cd ./$(LIBDIR) && make
@@ -35,3 +35,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: re fclean clean libutils all
