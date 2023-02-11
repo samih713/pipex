@@ -6,7 +6,7 @@
 #    By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/22 16:16:17 by sabdelra          #+#    #+#              #
-#    Updated: 2023/02/11 21:18:23 by sabdelra         ###   ########.fr        #
+#    Updated: 2023/02/11 22:17:33 by sabdelra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ $(NAME): $(OBJ) libutils
 	$(CC) $(CFLAGS) $(OBJ) ./utils/libutils.a  -o $@
 
 libutils:
-	cd ./$(LIBDIR) && make
+	cd $(LIBDIR) && make
 
 clean:
 	rm -f $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:22:47 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/10 17:42:52 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/11 22:21:52 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ void	exec_cmd(char *cmd, char **envp)
 		ft_strcat(pth_cmd, path[i]);
 		ft_strcat(pth_cmd, "/");
 		ft_strcat(pth_cmd, argv[0]);
-		execve(pth_cmd, argv, envp);
+		if (!access(pth_cmd, X_OK))
+		{
+			printf("executing %s\n", pth_cmd);
+			execve(pth_cmd, argv, envp);
+		}
 		free(pth_cmd);
 		i++;
 	}

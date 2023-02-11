@@ -6,7 +6,7 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 13:42:04 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/11 21:27:23 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/11 22:16:28 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,10 @@ char	**ft_split(char *s, char del)
 	int		wrd_len;
 
 	arr_size = count_words(s, del);
-	split = malloc(sizeof(char *) * arr_size + 2);
+	split = malloc(sizeof(char *) * arr_size + 1);
 	if (!split)
 		error_msg("Memory fail");
-	split[arr_size + 1] = NULL;
-	split[arr_size] = malloc(3);
-	split[arr_size] = "./";
+	split[arr_size] = NULL;
  	i = 0;
 	while (i < arr_size)
 	{
