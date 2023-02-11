@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 14:35:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/10 20:43:33 by sabdelra         ###   ########.fr       */
+/*   Created: 2023/02/10 21:59:20 by sabdelra          #+#    #+#             */
+/*   Updated: 2023/02/10 22:03:25 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "utils.h"
 
-void	error_msg(char *msg)
+char	*ft_strcat(char *dest, char *src)
 {
-	perror(msg);
-	exit(EXIT_FAILURE);
-}
+	int	i;
+	int	j;
 
-void	argcheck(int argc)
-{
-	if (argc < 5)
+	i = 0;
+	j = 0;
+	while (dest[i])
+		i++;
+	while (src[j])
 	{
-		write(2, "Invalid number of arguments\n", 29);
-		exit (EXIT_FAILURE);
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
+	dest[i] = '\0';
+	return (dest);
 }

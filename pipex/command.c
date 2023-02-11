@@ -6,7 +6,7 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:22:47 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/06 21:41:32 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:42:52 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 static void	exec_error(char **argv, char **path);
 
-/*
-ft_calloc has the mem check, calloc is needed over malloc
-cause the string needs to be all nulled hen reused with strcat
- */
 void	exec_cmd(char *cmd, char **envp)
 {
 	char	**argv;
@@ -54,9 +50,3 @@ static void	exec_error(char **argv, char **path)
 	free_split(path);
 	exit(EXIT_FAILURE);
 }
-
-/* int	main(int argc, char **argv, char **envp)
-{
-	exec_cmd(argv[1], envp);
-	return (0);
-} */

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 14:35:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/10 20:43:33 by sabdelra         ###   ########.fr       */
+/*   Created: 2023/02/10 21:58:42 by sabdelra          #+#    #+#             */
+/*   Updated: 2023/02/10 22:04:12 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "utils.h"
 
-void	error_msg(char *msg)
+int	ft_strncmp(char *s1, char *s2, int n)
 {
-	perror(msg);
-	exit(EXIT_FAILURE);
-}
+	int	i;
 
-void	argcheck(int argc)
-{
-	if (argc < 5)
+	i = 0;
+	while (s1[i] && s2[i] && i < n)
 	{
-		write(2, "Invalid number of arguments\n", 29);
-		exit (EXIT_FAILURE);
+		if ((s1[i] - s2[i]))
+			return ((s1[i] - s2[i]));
+		i++;
 	}
+	return (0);
 }

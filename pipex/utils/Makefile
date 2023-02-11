@@ -3,25 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sabdelra <sabdelra@student.42abudhabi.a    +#+  +:+       +#+         #
+#    By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/22 16:16:17 by sabdelra          #+#    #+#              #
-#    Updated: 2023/01/22 16:28:33 by sabdelra         ###   ########.fr        #
+#    Created: 2023/02/10 21:57:08 by sabdelra          #+#    #+#              #
+#    Updated: 2023/02/10 22:54:31 by sabdelra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC:= command.c error.c ft_split.c open_file.c pipex.c utils.c
+CCFLAGS:= -Wall -Wextra -Werror -g
 
-OBJ:=$(SRC:.c=.o)
+SRC:= ft_strncpy.c ft_calloc.c ft_memset.c ft_strcat.c ft_strncmp.c ft_strlen.c
 
-CFLAGS:= -Wall -Wextra -Werror -g
+OBJ:= ft_strncpy.o ft_calloc.o ft_memset.o ft_strcat.o ft_strncmp.o ft_strlen.o
 
-NAME = pipex
+NAME:= libutils.a
 
 all:$(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@ -g
+	ar rcs $@ $^
 
 clean:
 	rm $(OBJ)

@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 14:35:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/10 20:43:33 by sabdelra         ###   ########.fr       */
+/*   Created: 2023/02/10 21:59:36 by sabdelra          #+#    #+#             */
+/*   Updated: 2023/02/10 22:03:49 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "utils.h"
 
-void	error_msg(char *msg)
+int	ft_strlen(char *s)
 {
-	perror(msg);
-	exit(EXIT_FAILURE);
-}
+	int	i;
 
-void	argcheck(int argc)
-{
-	if (argc < 5)
-	{
-		write(2, "Invalid number of arguments\n", 29);
-		exit (EXIT_FAILURE);
-	}
+	i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
 }

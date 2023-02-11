@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 14:35:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/10 20:43:33 by sabdelra         ###   ########.fr       */
+/*   Created: 2023/02/10 21:59:57 by sabdelra          #+#    #+#             */
+/*   Updated: 2023/02/10 22:15:48 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "utils.h"
 
-void	error_msg(char *msg)
+void	*ft_calloc(size_t count, size_t size)
 {
-	perror(msg);
-	exit(EXIT_FAILURE);
-}
+	void	*dest;
 
-void	argcheck(int argc)
-{
-	if (argc < 5)
+	if (size && (SIZE_MAX / size) > count)
 	{
-		write(2, "Invalid number of arguments\n", 29);
-		exit (EXIT_FAILURE);
+		dest = malloc(size * count);
+		if (!dest)
+			return (NULL);
+		ft_memset(dest, 0, size * count);
 	}
+	else
+		return (NULL);
+	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:21:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/06 21:46:01 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/10 20:37:23 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 // option is either as INFILE or OUTFILE, they both have different permissions
 int	open_file(char *path, int option)
 {
-	int fd;
+	int	fd;
 
 	fd = -1;
 	if (option == INFILE)
 	{
-		if (access(path, R_OK) == -1) // R_OK has a pre-requisete F_OK
+		if (access(path, R_OK) == -1)
 			error_msg("Infile error");
 		else
 			fd = open(path, O_RDONLY);
 	}
 	else
-		fd = open(path, O_CREAT | O_TRUNC | O_WRONLY, 0644); // owner user/write, everyone else read
+		fd = open(path, O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	if (fd < 0)
 		error_msg("File error");
-	 return (fd);
+	return (fd);
 }
-

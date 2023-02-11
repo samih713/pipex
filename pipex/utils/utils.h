@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 14:35:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/10 20:43:33 by sabdelra         ###   ########.fr       */
+/*   Created: 2023/02/10 22:01:54 by sabdelra          #+#    #+#             */
+/*   Updated: 2023/02/10 22:05:43 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-void	error_msg(char *msg)
-{
-	perror(msg);
-	exit(EXIT_FAILURE);
-}
+# include <stdlib.h>
 
-void	argcheck(int argc)
-{
-	if (argc < 5)
-	{
-		write(2, "Invalid number of arguments\n", 29);
-		exit (EXIT_FAILURE);
-	}
-}
+void	*ft_calloc(size_t count, size_t size);
+void	*ft_memset(void *dest, int c, size_t len);
+char	*ft_strcat(char *dest, char *src);
+int		ft_strlen(char *s);
+int		ft_strncmp(char *s1, char *s2, int n);
+char	*ft_strncpy(char *dest, char *src, int n);
+
+#endif

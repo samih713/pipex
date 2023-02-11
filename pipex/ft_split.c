@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabdelra <sabdelra@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 13:42:04 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/01/21 15:14:23 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/10 20:51:28 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**ft_split(char *s, char del)
 	arr_size = count_words(s, del);
 	split = malloc(sizeof(char *) * arr_size + 1);
 	if (!split)
-		error_msg("Memory error, please download more memory");
+		error_msg("Memory fail");
 	split[arr_size] = NULL;
 	i = 0;
 	while (i < arr_size)
@@ -33,12 +33,23 @@ char	**ft_split(char *s, char del)
 		wrd_len = size_word(&s, del);
 		split[i] = malloc(sizeof(char) * wrd_len + 1);
 		if (!split[i])
-			error_msg("Memory error, please download more memory");
+			error_msg("Memory fail");
 		ft_strncpy(split[i], s, wrd_len);
 		i++;
 		s += wrd_len;
 	}
 	return (split);
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+	return ;
 }
 
 static int	count_words(char *s, char del)

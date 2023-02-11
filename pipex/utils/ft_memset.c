@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabdelra <sabdelra@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 14:35:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/01/22 14:47:17 by sabdelra         ###   ########.fr       */
+/*   Created: 2023/02/10 22:00:41 by sabdelra          #+#    #+#             */
+/*   Updated: 2023/02/10 22:02:58 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "utils.h"
 
-void	error_msg(char *msg)
+void	*ft_memset(void *dest, int c, size_t len)
 {
-	perror(msg);
-	exit(EXIT_FAILURE);
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)dest)[i] = c;
+		i++;
+	}
+	return (dest);
 }

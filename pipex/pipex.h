@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabdelra <sabdelra@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:35:54 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/01/22 16:24:23 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/10 22:31:58 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,18 @@
 # include <assert.h>
 # include <sys/wait.h>
 # include <sys/types.h>
-
+# include "./utils/utils.h"
 
 char	**ft_split(char *s, char del);
-// [to-do] put proper error message for malloc failure
-// open file
 int		open_file(char *path, int option);
+void	free_split(char **split);
 
-enum open_m {
+enum e_open_m {
 	INFILE,
 	OUTFILE,
 };
 
-enum pipe_end {
+enum e_pipe_end {
 	READ_END,
 	WRITE_END
 } ;
@@ -43,13 +42,6 @@ enum pipe_end {
 void	exec_cmd(char *cmd, char **envp);
 //error
 void	error_msg(char *msg);
-//utils
-char	*ft_strncpy(char *dest, char *src, int n);
-int		ft_strncmp(char *s1, char *s2, int n);
-void	free_split(char **split);
-char	*ft_strcat(char *dest, char *src);
-int		ft_strlen(char *s);
-void	*ft_calloc(size_t count, size_t size);
-void	*ft_memset(void *dest, int c, size_t len);
+void	argcheck(int argc);
 
 #endif
