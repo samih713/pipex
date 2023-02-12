@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 14:35:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/12 17:40:01 by sabdelra         ###   ########.fr       */
+/*   Created: 2023/02/12 20:12:14 by sabdelra          #+#    #+#             */
+/*   Updated: 2023/02/12 20:34:15 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	msg_error(char *msg)
 {
@@ -18,6 +18,7 @@ void	msg_error(char *msg)
 	exit(EXIT_FAILURE);
 }
 
+// here_doc case ?
 void	arg_error(int argc)
 {
 	if (argc < 5)

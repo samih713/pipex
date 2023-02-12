@@ -6,7 +6,7 @@
 #    By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 21:57:08 by sabdelra          #+#    #+#              #
-#    Updated: 2023/02/11 20:59:50 by sabdelra         ###   ########.fr        #
+#    Updated: 2023/02/12 17:59:52 by sabdelra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,9 @@ $(NAME): $(OBJ)
 	ar rcs $@ $^
 
 clean:
-	rm $(OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 
 re: all fclean
