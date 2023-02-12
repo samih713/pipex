@@ -6,7 +6,7 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:35:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/12 17:40:01 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/12 22:19:13 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	msg_error(char *msg)
 
 void	arg_error(int argc)
 {
-	if (argc < 5)
+	if (argc != 5)
 	{
 		write(2, "Invalid number of arguments\n", 29);
 		exit (EXIT_FAILURE);
