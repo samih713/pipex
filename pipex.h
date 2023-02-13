@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus.h                                      :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:35:54 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/13 14:58:48 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:34:55 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_BONUS_H
-# define PIPEX_BONUS_H
+#ifndef PIPEX_H
+# define PIPEX_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -24,7 +24,7 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <errno.h>
-# include "../utils/utils.h"
+# include "./utils/utils.h"
 
 char	**ft_split(char *s, char del);
 int		open_file(char *path, int option);

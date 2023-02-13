@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 14:35:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/12 22:19:13 by sabdelra         ###   ########.fr       */
+/*   Created: 2023/02/12 20:12:14 by sabdelra          #+#    #+#             */
+/*   Updated: 2023/02/13 18:33:26 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	msg_error(char *msg)
 	exit(EXIT_FAILURE);
 }
 
+// here_doc case ?
 void	arg_error(int argc)
 {
-	if (argc != 5)
+	if (argc < 5)
 	{
 		write(2, "Invalid number of arguments\n", 29);
 		exit (EXIT_FAILURE);

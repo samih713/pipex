@@ -6,7 +6,7 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:15:46 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/13 18:29:41 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:56:28 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,23 @@ static void	child_loop(int *fd, char **argv, char **envp, int i);
 
 int	main(int argc, char **argv, char **envp)
 {
-	int	fd[6];
+	int	fd[7];
 	int	pstat;
 	int	i;
 
 	arg_error(argc);
 	i = argc - 4;
+	fd[6] = 0;
+	if (!ft_strncmp(argv[1], "here_doc", 9))
+		fd[6] = 1;
 	fd[5] = i;
-	fd[INFILE] = open_file(argv[1], INFILE);
-	fd[OUTFILE] = open_file(argv[argc - 1], OUTFILE);
+	fd[INFILE] = open_file(argv[1 + fd[6]], INFILE, fd[6]);
+	fd[OUTFILE] = open_file(argv[argc - 1], OUTFILE, fd[6]);
 	if (pipe(fd) < 0)
 		msg_error("pipe()");
 	while (i > 0)
 	{
-		child_loop(fd, argv, envp, i);
+		child_loop(fd, argv, envp, i + fd[6]);
 		--i;
 	}
 	dup2(fd[READ_END], STDIN_FILENO);
