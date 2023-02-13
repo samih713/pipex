@@ -6,13 +6,12 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:21:17 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/12 20:23:08 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:22:36 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-// option is either as INFILE or OUTFILE, they both have different permissions
 int	open_file(char *path, int option)
 {
 	int	fd;

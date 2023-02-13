@@ -6,7 +6,7 @@
 /*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:35:54 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/12 20:23:42 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:58:48 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,12 @@ char	**ft_split(char *s, char del);
 int		open_file(char *path, int option);
 void	free_split(char **split);
 
-enum e_open_m {
-	INFILE,
-	OUTFILE,
+enum {
+	READ_END = 0,
+	WRITE_END = 1,
+	INFILE = 2,
+	OUTFILE = 3
 };
-
-enum e_pipe_end {
-	READ_END,
-	WRITE_END
-} ;
 // command
 void	exec_cmd(char *cmd, char **envp);
 //error

@@ -3,84 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabdelra <sabdelra@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:15:46 by sabdelra          #+#    #+#             */
-/*   Updated: 2023/02/13 03:54:28 by sabdelra         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:29:41 by sabdelra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
-/* TO-FIX */
-/* MULTIPLE PIPE */
-/* SIMPLIFY */
-/* IMPROVE MAKE */
 
-static void	close_fds(int *p_fd, int *fd);
-
-enum {
-	READ_END = 0,
-	WRITE_END = 1,
-	INFILE = 2,
-	OUTFILE = 3
-};
+static void	close_fds(int *fd);
+static void	child(int *fd, char *argv, char **envp);
+static void	child_loop(int *fd, char **argv, char **envp, int i);
 
 int	main(int argc, char **argv, char **envp)
 {
-	// VARIABLES
-	int fd[4]; // [0,1 -> pipe; 2,3 -> infile/outfile]
-	int	ch_pid;
-	// int	pstat;
-	// int i;
-	// VARIABLES END
+	int	fd[6];
+	int	pstat;
+	int	i;
 
-	// arg_error(argc);
-	//
+	arg_error(argc);
+	i = argc - 4;
+	fd[5] = i;
 	fd[INFILE] = open_file(argv[1], INFILE);
 	fd[OUTFILE] = open_file(argv[argc - 1], OUTFILE);
 	if (pipe(fd) < 0)
 		msg_error("pipe()");
-	// FIRST PROCESS
-
-	for (int i = argc - 4; i > 0; --i) {
-		ch_pid = fork();
-		if (!ch_pid) {
-			dup2(fd[INFILE], STDIN_FILENO);
-			dup2(fd[WRITE_END], STDOUT_FILENO);
-			close(fd[WRITE_END]);
-			exec_cmd(argv[i + 1], envp);
-		}
-		if (i == 1) {
-			close(fd[INFILE]);
-			fd[INFILE] = fd[READ_END]; // children start reading from pipe after first iteration
-		}
+	while (i > 0)
+	{
+		child_loop(fd, argv, envp, i);
+		--i;
 	}
-	// MIDDLE PROCESS
 	dup2(fd[READ_END], STDIN_FILENO);
+	dup2(fd[OUTFILE], STDOUT_FILENO);
+	close_fds(fd);
+	exec_cmd(argv[argc - 2], envp);
+	wait(&pstat);
+	return (0);
+}
+
+static void	close_fds(int *fd)
+{
+	close(fd[INFILE]);
+	close(fd[OUTFILE]);
+	close(fd[READ_END]);
+	close(fd[WRITE_END]);
+}
+
+static void	child(int *fd, char *argv, char **envp)
+{
+	dup2(fd[INFILE], STDIN_FILENO);
 	dup2(fd[WRITE_END], STDOUT_FILENO);
-	close(fd[0]);
-	close(fd[1]);
-	// // LAST PROCESS PARENT?
-	// dup2(p_fd[READ_END], STDIN_FILENO);
-	// dup2(fd[1], STDOUT_FILENO);
-	// exec_cmd(argv[i], envp);
-	close_fds(p_fd, fd);
-	// wait(&pstat);
-	// return (0);
+	close_fds(fd);
+	exec_cmd(argv, envp);
 }
 
-static void	close_fds(int *p_fd, int *fd)
+static void	child_loop(int *fd, char **argv, char **envp, int i)
 {
-	close(p_fd[0]);
-	close(fd[0]);
-	close(p_fd[1]);
-	close(fd[1]);
-}
-// fork how many times?
-/* static void child(int *fd, int *p_fd, char *cmd, char *envp[])
-{
+	int	ch_pid;
 
-	// COMMON
-	close(p_fd[READ_END]);
-	close(p_fd[WRITE_END]);
-} */
+	ch_pid = 1;
+	if (ch_pid)
+	ch_pid = fork();
+	if (!ch_pid)
+	{
+		if (!ch_pid && i < fd[5])
+		{
+			fd[4] = fd[INFILE];
+			fd[INFILE] = fd[READ_END];
+			close(fd[4]);
+		}
+		if (!ch_pid)
+			child(fd, argv[i + 1], envp);
+	}
+}

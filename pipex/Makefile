@@ -6,7 +6,7 @@
 #    By: sabdelra <sabdelra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/22 16:16:17 by sabdelra          #+#    #+#              #
-#    Updated: 2023/02/12 20:25:30 by sabdelra         ###   ########.fr        #
+#    Updated: 2023/02/13 18:30:14 by sabdelra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ NAME:= pipex
 
 LIBDIR:= ./utils
 
-all: $(NAME)
+all:
 
 bonus: $(BOBJ) libutils
 	$(CC) $(CFLAGS) $(BOBJ) ./utils/libutils.a  -o $(NAME)
